@@ -27,6 +27,16 @@ var random3 = randPic(0,imgPhotos.length); // randPic starts at 0 in array and p
 function displayPic() {
 
   console.log(randPic(0, imgPhotos.length));
+//WHILE LOOP//
+  while (random2 === random1) {
+    // randPic(0,imgPhotos.length);
+    random2 = randPic(0,imgPhotos.length);
+  }
+
+  while (random3 === random1 || random3 === random2){
+    // randPic(0,imgPhotos.length);
+    random3 = randPic(0,imgPhotos.length);
+  }
 
   left.src = allProducts[random1].imgPath;// The left ID of <img> is pulling a source from image path with a random number random1 and using that random number to select a photo.
   center.src = allProducts[random2].imgPath;
@@ -36,11 +46,26 @@ function displayPic() {
 displayPic();
 
 left.addEventListener('click', handleLeftClick);
+center.addEventListener('click', handleCenterClick);
+right.addEventListener('click', handleRightClick);
 
 function handleLeftClick(event) {
   allProducts[random1].imgClicked += 1;
   console.log(allProducts[random1].imgClicked + ' clicks for ' + allProducts[random1].imgName);
   random1 = randPic(0,imgPhotos.length);
   // console.log('A picture was clicked');
+  displayPic();
+}
+function handleCenterClick(event) {
+  allProducts[random2].imgClicked += 1;
+  console.log(allProducts[random2].imgClicked + 'clicks for ' + allProducts[random2].imgName);
+  random2 = randPic(0,imgPhotos.length);
+  displayPic();
+}
+
+function handleRightClick(event) {
+  allProducts[random3].imgClicked += 1;
+  console.log(allProducts[random3].imgClicked + 'clicks for ' + allProducts[random3].imgName);
+  random3 = randPic(0,imgPhotos.length);
   displayPic();
 }
