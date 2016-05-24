@@ -18,15 +18,20 @@ function randPic(min,max) { // Creates a random number and returns that value.
   return Math.floor(Math.random() * (max - min) + min);
 }
 var left = document.getElementById('left'); // Assigning variable for javascript that is taken from the left ID tag of HTML.
-var random1 = randPic(0,imgPhotos.length); // randPic starts at 0 in array and picks out a random number from the length of array.
+var center = document.getElementById('center');
+var right = document.getElementById('right');
+
+var random1 = randPic(0,imgPhotos.length);
+var random2 = randPic(0,imgPhotos.length);
+var random3 = randPic(0,imgPhotos.length); // randPic starts at 0 in array and picks out a random number from the length of array.
 function displayPic() {
 
   console.log(randPic(0, imgPhotos.length));
 
-  left.src = allProducts[random1].imgPath; // The left ID of <img> is pulling a source from image path with a random number random1 and using that random number to select a photo.
-
+  left.src = allProducts[random1].imgPath;// The left ID of <img> is pulling a source from image path with a random number random1 and using that random number to select a photo.
+  center.src = allProducts[random2].imgPath;
+  right.src = allProducts[random3].imgPath;
 //Will have an image that we can click on and have a click function. Once the option is clicked it will move on to another image.
-
 }
 displayPic();
 
