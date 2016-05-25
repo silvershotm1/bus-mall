@@ -55,7 +55,6 @@ function displayPic() {
     right.alt = allProducts[random3].imgName;
     allProducts[random3].imgShown += 1;
 
-<<<<<<< HEAD
     clickCounter++; // will add one to the counter based on clicking
   } else {
     console.log('You\'ve reached the MAX of 25 pictures clicked');
@@ -75,18 +74,11 @@ function handleContainerClick() {
     }
   }
   displayPic();  // call function to display pictures.
-=======
-  left.src = allProducts[random1].imgPath;// The left ID of <img> is pulling a source from image path with a random
-  center.src = allProducts[random2].imgPath;
-  right.src = allProducts[random3].imgPath;
-//Will have an image that we can click on and have a click function. Once the option is clicked it will move on to another image.
->>>>>>> 1a03105b125571c24360907cd58ca380a305363a
 }
 
 container.addEventListener('click', handleContainerClick);  // click will check if you clicked on pic or not
 displayPic(); // call function to re-display pictures.
 
-<<<<<<< HEAD
 ///////////CORPSE CODE THAT NOT READY TO DELETE YET//////////////////////
 
 // left.addEventListener('click', handleLeftClick);
@@ -139,32 +131,4 @@ function drawChart() {
 
   var chart_out = document.getElementById('chart_out').getContext('2d');
   new Chart(chart_out).Bar(barData);
-=======
-function handleLeftClick(event) {
-  allProducts[random1].imgClicked += 1;
-  console.log(allProducts[random1].imgClicked + ' clicks for ' + allProducts[random1].imgName);
-  random1 = randPic(0,imgPhotos.length);
-  random2 = randPic(0,imgPhotos.length);
-  random3 = randPic(0,imgPhotos.length);
-  // console.log('A picture was clicked');
-  displayPic();
-}
-function handleCenterClick(event) {
-  allProducts[random2].imgClicked += 1;
-  console.log(allProducts[random2].imgClicked + 'clicks for ' + allProducts[random2].imgName);
-  random1 = randPic(0,imgPhotos.length);
-  random2 = randPic(0,imgPhotos.length);
-  random3 = randPic(0,imgPhotos.length);
-
-  displayPic();
-}
-
-function handleRightClick(event) {
-  allProducts[random3].imgClicked += 1;
-  console.log(allProducts[random3].imgClicked + 'clicks for ' + allProducts[random3].imgName);
-  random1 = randPic(0,imgPhotos.length);
-  random2 = randPic(0,imgPhotos.length);
-  random3 = randPic(0,imgPhotos.length);
-  displayPic();
->>>>>>> 1a03105b125571c24360907cd58ca380a305363a
 }
