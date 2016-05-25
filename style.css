@@ -1,3 +1,15 @@
 body {
-  
+
+}
+
+img {
+  margin:30px;
+}
+
+div# {
+  border: 1px solid black;
+}
+
+canvas {
+  border:1px solid black;
 }

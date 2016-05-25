@@ -38,10 +38,9 @@ function displayPic() {
     random3 = randPic(0,imgPhotos.length);
   }
 
-  left.src = allProducts[random1].imgPath;// The left ID of <img> is pulling a source from image path with a random number random1 and using that random number to select a photo.
+  left.src = allProducts[random1].imgPath;// The left ID of <img> is pulling a source from image path with a random
   center.src = allProducts[random2].imgPath;
   right.src = allProducts[random3].imgPath;
-//Will have an image that we can click on and have a click function. Once the option is clicked it will move on to another image.
 }
 displayPic();
 
@@ -53,19 +52,43 @@ function handleLeftClick(event) {
   allProducts[random1].imgClicked += 1;
   console.log(allProducts[random1].imgClicked + ' clicks for ' + allProducts[random1].imgName);
   random1 = randPic(0,imgPhotos.length);
+  random2 = randPic(0,imgPhotos.length);
+  random3 = randPic(0,imgPhotos.length);
   // console.log('A picture was clicked');
   displayPic();
 }
 function handleCenterClick(event) {
   allProducts[random2].imgClicked += 1;
   console.log(allProducts[random2].imgClicked + 'clicks for ' + allProducts[random2].imgName);
+  random1 = randPic(0,imgPhotos.length);
   random2 = randPic(0,imgPhotos.length);
+  random3 = randPic(0,imgPhotos.length);
+
   displayPic();
 }
 
 function handleRightClick(event) {
   allProducts[random3].imgClicked += 1;
   console.log(allProducts[random3].imgClicked + 'clicks for ' + allProducts[random3].imgName);
+  random1 = randPic(0,imgPhotos.length);
+  random2 = randPic(0,imgPhotos.length);
   random3 = randPic(0,imgPhotos.length);
   displayPic();
 }
+
+/////////////////////////START OF THE CHART!!!!////////////////////////////////
+var barData = {
+  labels : [allProducts]
+  datasets : [
+    {
+
+      fillColor :   '#48A497',
+      strokeColor : '#48A4D1',
+      data : []
+
+    }
+  ]
+}
+
+var chart_out = document.getElementById('chart_out').getContext('2d');
+new Chart(chart_out).Bar(barData);
