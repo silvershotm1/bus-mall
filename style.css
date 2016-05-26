@@ -12,9 +12,25 @@ h5 {
 }
 
 img {
-  margin:30px;
+  margin:100px;
   width: 250px;
   height:250px;
+
+}
+
+img#left {
+  border:2px solid blue;
+
+}
+
+img#center {
+  border:2px solid blue;
+
+}
+
+img#right {
+  border:2px solid blue;
+
 }
 
 div#intro1 {
@@ -33,13 +49,15 @@ div#intro2 {
   width: 600px;
   text-align: center;
   margin:0 auto;
+
 }
+
 .hline {
   width:100%;
   height:1px;
-  border-bottom: 1px solid #000;  
+  border-bottom: 1px solid #000;
 }
 
 canvas {
-  border:1px solid black;
+  /*border:1px solid black;*/
 }
