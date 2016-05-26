@@ -4,6 +4,7 @@ var left = document.getElementById('left'); // Assigning variable for javascript
 var center = document.getElementById('center');
 var right = document.getElementById('right');
 var seeChart = document.getElementById('seeChart');
+var purgeLS = document.getElementById('purgeLS');
 
 var imgPhotos = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 var allProducts = [];
@@ -95,6 +96,18 @@ for (var i = 0; i < imgPhotos.length; i++) {
 }
 seeChart.addEventListener('click',drawChart);
 
+function purgeLocalStorage() { //Function to purge the local storage
+  localStorage.clear();  //Clears local storage
+}
+purgeLS.addEventListener('click', purgeLocalStorage); //
+
+
+///////////////// STRINGIFY /////////////////////////////////////////////////
+var lsString = JSON.stringify(allProducts);
+
+
+
+
 /////////////////////////START OF THE CHART!!!!////////////////////////////////
 var barClicks = {
   labels: imgPhotos,
@@ -119,7 +132,5 @@ function drawChart() {
     data: barClicks,
     // options: options
   });
-
-  // var chart_out = document.getElementById('chart_out').getContext('2d'););
 }
 // drawChart();
