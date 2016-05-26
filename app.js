@@ -3,12 +3,14 @@ var container = document.getElementById('container');
 var left = document.getElementById('left'); // Assigning variable for javascript that is taken from the left ID tag of HTML.
 var center = document.getElementById('center');
 var right = document.getElementById('right');
+var seeChart = document.getElementById('seeChart');
 
 var imgPhotos = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 var allProducts = [];
 var clickCounter = 0;  //set counter to zero
 
-var clickArray = [];
+var clickArray = []; //use array to hold  the numerical data that the chart will render
+
 
 //CONSTRUCTOR FUNCTION
 function Photo(imgName) {
@@ -57,7 +59,9 @@ function displayPic() {
 
     clickCounter++; // will add one to the counter based on clicking
   } else {
+
     console.log('You\'ve reached the MAX of 25 pictures clicked');
+    // alert('You\'ve reached the MAX of 25 pictures clicked');
   }
 }
 function handleContainerClick() {
@@ -79,56 +83,36 @@ function handleContainerClick() {
 container.addEventListener('click', handleContainerClick);  // click will check if you clicked on pic or not
 displayPic(); // call function to re-display pictures.
 
-///////////CORPSE CODE THAT NOT READY TO DELETE YET//////////////////////
-
-// left.addEventListener('click', handleLeftClick);
-// center.addEventListener('click', handleCenterClick);
-// right.addEventListener('click', handleRightClick);
-
-// function handleLeftClick(event) {
-//   allProducts[random1].imgClicked += 1;
-//   console.log(allProducts[random1].imgClicked + ' clicks for ' + allProducts[random1].imgName);
-//   random1 = randPic(0,imgPhotos.length);
-//   random2 = randPic(0,imgPhotos.length);
-//   random3 = randPic(0,imgPhotos.length);
-//   // console.log('A picture was clicked');
-//   displayPic();
-// }
-// function handleCenterClick(event) {
-//   allProducts[random2].imgClicked += 1;
-//   console.log(allProducts[random2].imgClicked + 'clicks for ' + allProducts[random2].imgName);
-//   random1 = randPic(0,imgPhotos.length);
-//   random2 = randPic(0,imgPhotos.length);
-//   random3 = randPic(0,imgPhotos.length);
-//
-//   displayPic();
-// }
-//
-// function handleRightClick(event) {
-//   allProducts[random3].imgClicked += 1;
-//   console.log(allProducts[random3].imgClicked + 'clicks for ' + allProducts[random3].imgName);
-//   random1 = randPic(0,imgPhotos.length);
-//   random2 = randPic(0,imgPhotos.length);
-//   random3 = randPic(0,imgPhotos.length);
-//   displayPic();
-// }
+for (var i = 0; i < imgPhotos.length; i++) {
+  clickArray.push(allProducts[i].imgClicked);
+}
+seeChart.addEventListener('click',drawChart);
 
 /////////////////////////START OF THE CHART!!!!////////////////////////////////
-// var barData = {
-//   labels : [allProducts]
-//   datasets : [
-//     {
-//
-//       fillColor :   '#48A497',
-//       strokeColor : '#48A4D1',
-//       data : []
-//
-//     }
-//   ]
-// }
-//
-function drawChart() {
+var barClicks = {
+  labels: imgPhotos,
+  datasets: [
+    {
+      label: 'Amount of Items Clicked',
+      backgroundColor: 'rgba(255,99,132,0.2)',
+      borderColor: 'rgba(255,99,132,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+      hoverBorderColor: 'rgba(255,99,132,1)',
+      data: clickArray,
+    }
+  ]
+};
 
-  var chart_out = document.getElementById('chart_out').getContext('2d');
-  new Chart(chart_out).Bar(barData);
+function drawChart() {
+  var ctx = document.getElementById('chart_out').getContext('2d');
+
+  var cData = new Chart(ctx, {
+    type: 'bar',
+    data: barClicks,
+    // options: options
+  });
+
+  // var chart_out = document.getElementById('chart_out').getContext('2d'););
 }
+// drawChart();
