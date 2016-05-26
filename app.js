@@ -8,9 +8,9 @@ var seeChart = document.getElementById('seeChart');
 var imgPhotos = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 var allProducts = [];
 var clickCounter = 0;  //set counter to zero
+var maxClicks = 26;
 
 var clickArray = []; //use array to hold  the numerical data that the chart will render
-
 
 //CONSTRUCTOR FUNCTION
 function Photo(imgName) {
@@ -63,6 +63,13 @@ function displayPic() {
     console.log('You\'ve reached the MAX of 25 pictures clicked');
     // alert('You\'ve reached the MAX of 25 pictures clicked');
   }
+  if (clickCounter === maxClicks) {
+    seeChart.style.visibility = 'visible';
+    container.removeEventListener('click', handleContainerClick);
+    return alert('You\'ve reached the MAX of 25 pictures clicked. Click on the button below the pictures to see a bar graph from you\'re input.');
+  } else {
+    seeChart.style.visibility = 'hidden';
+  }
 }
 function handleContainerClick() {
   if (event.target.id === 'container') { // if div name equals html name
@@ -94,11 +101,11 @@ var barClicks = {
   datasets: [
     {
       label: 'Amount of Items Clicked',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: 'rgba(128, 154, 250, 1)',
+      borderColor: 'rgba(9, 51, 206, 1)',
       borderWidth: 1,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
+      hoverBackgroundColor: 'rgba(0, 31, 143, 1)',
+      hoverBorderColor: 'rgba(168, 187, 255, 1)',
       data: clickArray,
     }
   ]
