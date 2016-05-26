@@ -99,7 +99,15 @@ seeChart.addEventListener('click',drawChart);
 function purgeLocalStorage() { //Function to purge the local storage
   localStorage.clear();  //Clears local storage
 }
-purgeLS.addEventListener('click', purgeLocalStorage);
+purgeLS.addEventListener('click', purgeLocalStorage); //
+
+
+///////////////// STRINGIFY /////////////////////////////////////////////////
+var lsString = JSON.stringify(allProducts);
+
+
+
+
 /////////////////////////START OF THE CHART!!!!////////////////////////////////
 var barClicks = {
   labels: imgPhotos,
