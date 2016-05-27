@@ -67,6 +67,7 @@ function displayPic() {
   if (clickCounter === maxClicks) {
     seeChart.style.visibility = 'visible';
     container.removeEventListener('click', handleContainerClick);
+    localStorage.setItem('localData', JSON.stringify(allProducts));
     return alert('You\'ve reached the MAX of 25 pictures clicked. Click on the button below the pictures to see a bar graph from you\'re input.');
   } else {
     seeChart.style.visibility = 'hidden';
@@ -84,6 +85,7 @@ function handleContainerClick() {
       clickArray[i] = allProducts[i].imgClicked;  // assigns clicks to the click array.
       console.log(allProducts[i].imgName + ' has ' + allProducts[i].imgClicked + ' clicks.'); //logs mssg of click
     }
+
   }
   displayPic();  // call function to display pictures.
 }
@@ -96,17 +98,24 @@ for (var i = 0; i < imgPhotos.length; i++) {
 }
 seeChart.addEventListener('click',drawChart);
 
+/////////////LOCAL STORAGE
+(function(){
+  if (localStorage.localData) {
+    var keyData = JSON.parse(localStorage.getItem('localData'));
+    for (var i = 0; i < allProducts.length; i++) {
+      allProducts = keyData;
+    }
+  }
+})();
+
+/////////////PURGE LOCAL STORAGE///////////////////////////////////////////
+
 function purgeLocalStorage() { //Function to purge the local storage
   localStorage.clear();  //Clears local storage
 }
 purgeLS.addEventListener('click', purgeLocalStorage); //
 
-
 ///////////////// STRINGIFY /////////////////////////////////////////////////
-var lsString = JSON.stringify(allProducts);
-
-
-
 
 /////////////////////////START OF THE CHART!!!!////////////////////////////////
 var barClicks = {
