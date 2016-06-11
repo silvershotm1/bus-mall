@@ -4,7 +4,8 @@ var left = document.getElementById('left'); // Assigning variable for javascript
 var center = document.getElementById('center');
 var right = document.getElementById('right');
 var seeChart = document.getElementById('seeChart');
-var purgeLS = document.getElementById('purgeLS');
+
+// var purgeLS = document.getElementById('purgeLS');
 
 var imgPhotos = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 var allProducts = [];
@@ -64,7 +65,7 @@ function displayPic() {
     console.log('You\'ve reached the MAX of 25 pictures clicked');
     // alert('You\'ve reached the MAX of 25 pictures clicked');
   }
-  if (clickCounter === maxClicks) {
+  if (clickCounter >= maxClicks) {
     seeChart.style.visibility = 'visible';
     container.removeEventListener('click', handleContainerClick);
     localStorage.setItem('localData', JSON.stringify(allProducts));
@@ -98,22 +99,22 @@ for (var i = 0; i < imgPhotos.length; i++) {
 }
 seeChart.addEventListener('click',drawChart);
 
-/////////////LOCAL STORAGE
+/////////////LOCAL STORAGE//////////////////////////////////////////////
 (function(){
   if (localStorage.localData) {
     var keyData = JSON.parse(localStorage.getItem('localData'));
-    for (var i = 0; i < allProducts.length; i++) {
-      allProducts = keyData;
-    }
+    // for (var i = 0; i < allProducts.length; i++) {
+    allProducts = keyData;
   }
-})();
-
-/////////////PURGE LOCAL STORAGE///////////////////////////////////////////
-
-function purgeLocalStorage() { //Function to purge the local storage
-  localStorage.clear();  //Clears local storage
 }
-purgeLS.addEventListener('click', purgeLocalStorage); //
+)();
+
+// /////////////PURGE LOCAL STORAGE///////////////////////////////////////////
+//
+// function purgeLocalStorage() { //Function to purge the local storage
+//   localStorage.clear();  //Clears local storage
+// }
+// purgeLS.addEventListener('click', purgeLocalStorage); //
 
 ///////////////// STRINGIFY /////////////////////////////////////////////////
 
